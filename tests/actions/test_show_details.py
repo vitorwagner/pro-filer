@@ -4,6 +4,10 @@ mock_context = {
     "base_path": "pro_filer/actions/alpha_actions.py"
 }
 
+mock_context_no_extension = {
+    "base_path": "pro_filer/actions/alpha_actions"
+}
+
 mock_context_no_file = {
     "base_path": "/home/trybe/????"
 }
@@ -14,6 +18,14 @@ def test_show_details(capsys):
     captured = capsys.readouterr()
     assert captured.out == "File name: alpha_actions.py\n\
 File size in bytes: 2346\nFile type: file\nFile extension: .py\n\
+Last modified date: 2023-07-04\n"
+
+
+def test_show_details_no_extension(capsys):
+    show_details(mock_context_no_extension)
+    captured = capsys.readouterr()
+    assert captured.out == "File name: alpha_actions.py\n\
+File size in bytes: 2346\nFile type: file\nFile extension: [no extension]\n\
 Last modified date: 2023-07-04\n"
 
 
