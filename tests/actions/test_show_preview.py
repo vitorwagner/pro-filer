@@ -1,7 +1,9 @@
 from pro_filer.actions.main_actions import show_preview  # NOQA
 
 mock_context = {
-    "all_files": ["src/__init__.py", "src/app.py", "src/utils/__init__.py"],
+    "all_files": ["src/__init__.py", "src/app.py", "src/utils/__init__.py",
+                  "src/utils/alpha.py", "src/utils/beta.py",
+                  "src/utils/gamma.py"],
     "all_dirs": ["src", "src/utils"]
 }
 
@@ -14,9 +16,9 @@ mock_empty_context = {
 def test_show_preview(capsys):
     show_preview(mock_context)
     captured = capsys.readouterr()
-    assert captured.out == "Found 3 files and 2 directories\n\
-First 5 files: ['src/__init__.py', 'src/app.py', \
-'src/utils/__init__.py']\n\
+    assert captured.out == "Found 6 files and 2 directories\n\
+First 5 files: ['src/__init__.py', 'src/app.py', 'src/utils/__init__.py',\
+ 'src/utils/alpha.py', 'src/utils/beta.py']\n\
 First 5 directories: ['src', 'src/utils']\n"
 
 
