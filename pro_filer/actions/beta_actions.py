@@ -1,12 +1,18 @@
-"""Arquivo que estudantes devem editar1"""
+"""Arquivo que estudantes devem editar"""
+
+# https://stackoverflow.com/a/4445849
 
 
 def show_deepest_file(context):
     if not context["all_files"]:
         print("No files found")
     else:
-        deepest_file = max(context["all_files"], key=len)
+        deepest_file = max(context["all_files"], key=count_nesting_level)
         print(f"Deepest file: {deepest_file}")
+
+
+def count_nesting_level(path):
+    return path.count('/')
 
 
 def find_file_by_name(context, search_term, case_sensitive=True):
